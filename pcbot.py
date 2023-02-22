@@ -1,5 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor 
