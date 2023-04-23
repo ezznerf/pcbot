@@ -9,12 +9,6 @@ class OSInterface:
     async def make_screenshot(self, message: types.Message):
         pass
 
-    async def delete_file(self, message: types.Message):
-        pass
-
-    async def get_system_characteristics(self, message: types.Message):
-        pass
-
     async def reboot(self, message: types.Message):
         pass
 
@@ -46,4 +40,31 @@ class OSInterface:
         pass
 
     async def win_d(self, message: types.Message):
+        pass
+        
+    async def brightness25(self, message: types.Message):
+        pass
+
+    async def brightness50(self, message: types.Message):
+        pass
+
+    async def brightness75(self, message: types.Message):
+        pass
+
+    async def brightness100(self, message:types.Message):
+        pass
+
+    async def mouse_up(self, messsage:types.Message):
+        pass
+
+    async def mouse_down(self, messsage: types.Message):
+        pass
+
+    async def mouse_left(self, messsage: types.Message):
+        pass
+
+    async def mouse_right(self, messsage: types.Message):
+        pass
+
+    async def alt_f4(self, messsage: types.Message):
         pass
