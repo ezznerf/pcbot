@@ -36,10 +36,10 @@ class Application:
         await self.__bot.send_message(message.from_user.id, "Главное меню!", reply_markup=self.__keyboard.keyboard)
 
     async def show_brightness(self, message: types.Message):
-        await self.__bot.send_message(message.from_user.id, text='Выберите яркость вашего экрана', reply_markup=self.__brightness.brightness)
+        await self.__bot.send_message(message.from_user.id, text='Выберите яркость вашего экрана', reply_markup=self.__brightness.keyboard)
 
     async def show_hotkeys(self, message: types.Message):
-        await self.__bot.send_message(message.from_user.id, text='Выберите сочетание клавиш', reply_markup=self.__hotkeys.hotkeys)
+        await self.__bot.send_message(message.from_user.id, text='Выберите сочетание клавиш', reply_markup=self.__hotkeys.keyboard)
         
     async def show_mouse(self, message:types.Message):
         await self.__bot.send_message(message.from_user.id, text='Мышка взята под управление !', reply_markup=self.__mouse.keyboard)
