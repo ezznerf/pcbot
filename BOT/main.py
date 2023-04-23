@@ -20,20 +20,28 @@ if __name__ == '__main__':
         .add_button("/☀️ЯРКОСТЬ☀️", description='изменяет яркость вашего экрана')\
         .add_button("/🌡ТЕМПЕРАТУРА🌡", description='поможет узнать температуру вашего процессора, возможно и видеокарты')\
         .add_button("/⌨️ГОРЯЧИЕ_КЛАВИШИ⌨️", description='выводит список доступных горячих клавиш')\
+        .add_button("/🖱МЫШЬ🖱", description='(BETA)управление мышью(BETA)')
 
+    brightness_kb = KeyboardWrapper()
+    brightness_kb.add_button(text="/25", description=False)\
+        .add_button("/50", description=False)\
+        .add_button("/75", description=False)\
+        .add_button("/100", description=False)\
+        .add_button("/⏹", description=False)
 
-    brightness_kb = BrightnessKeyboard()
-    brightness_kb.add_button(text="/25")\
-        .add_button("/50")\
-        .add_button("/75")\
-        .add_button("/100")\
-        .add_button("/⏹")
-
-    hotkeys_kb = HotkeysKeyboard()
-    hotkeys_kb.add_button(text="/CTRL+SHIFT+ESC") \
-        .add_button("/WIN+A")\
-        .add_button("/WIN+D")\
-        .add_button("/⏹")
+    hotkeys_kb = KeyboardWrapper()
+    hotkeys_kb.add_button(text="/CTRL+SHIFT+ESC", description=False) \
+        .add_button("/WIN+A", description=False)\
+        .add_button("/WIN+D", description=False)\
+        .add_button("/⏹", description=False)
+        
+    mouse_kb = KeyboardWrapper()
+    mouse_kb.add_button("/⬆️", description=False)\
+        .add_button("/⬅️", description=False)\
+        .add_button("/➡️", description=False)\
+        .add_button("/⬇️", description=False)\
+        .add_button("/press", description=False)\
+        .add_button("/⏹", description=False)
 
     application = Application(config, greet_kb, brightness_kb, hotkeys_kb)
 
