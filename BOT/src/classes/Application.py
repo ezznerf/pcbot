@@ -14,6 +14,7 @@ class Application:
         self.__keyboard = keyboard
         self.__brightness = keyboard2
         self.__hotkeys = keyboard3
+        self.__mouse = keyboard4
         self.__bot = Bot(token=config.get_param('token'))
         self.__dp = Dispatcher(self.__bot)
 
@@ -37,9 +38,12 @@ class Application:
     async def show_brightness(self, message: types.Message):
         await self.__bot.send_message(message.from_user.id, text='Выберите яркость вашего экрана', reply_markup=self.__brightness.brightness)
 
-
     async def show_hotkeys(self, message: types.Message):
         await self.__bot.send_message(message.from_user.id, text='Выберите сочетание клавиш', reply_markup=self.__hotkeys.hotkeys)
+        
+    async def show_mouse(self, message:types.Message):
+        await self.__bot.send_message(message.from_user.id, text='Мышка взята под управление !', reply_markup=self.__mouse.keyboard)
+
 
 
     def register_handlers(self):
@@ -47,7 +51,6 @@ class Application:
         self.__dp.register_message_handler(self.__os.screenshot, commands=["📸СКРИНШОТ📸"])
         self.__dp.register_message_handler(self.__os.make_photo, commands=["📸КАМЕРА📸"])
         self.__dp.register_message_handler(self.__os.shutdown, commands=["🖥ВЫКЛЮЧИТЬ🖥"])
-        # self.__dp.register_message_handler(self.__os.disk_area, commands=["🚮УДАЛИТЬ🚮"])
         self.__dp.register_message_handler(self.__os.win_locker, commands=["🔒ПАРОЛЬ🔒"])
         self.__dp.register_message_handler(self.__os.reboot, commands=["♻️Перезагрузить♻️"])
         self.__dp.register_message_handler(self.__os.disk_area, commands=["💾ДИСКИ💾"])
@@ -64,6 +67,13 @@ class Application:
         self.__dp.register_message_handler(self.__os.ctrl_shift_esc, commands=["CTRL+SHIFT+ESC"])
         self.__dp.register_message_handler(self.__os.win_a, commands=["WIN+A"])
         self.__dp.register_message_handler(self.__os.win_d, commands=["WIN+D"])
+        self.__dp.register_message_handler(self.__os.alt_f4, commands=["ALT+F4"])
+        self.__dp.register_message_handler(self.show_mouse, commands=["🖱МЫШЬ🖱"])
+        self.__dp.register_message_handler(self.__os.mouse_up, commands=["⬆️"])
+        self.__dp.register_message_handler(self.__os.mouse_left, commands=["⬅️"])
+        self.__dp.register_message_handler(self.__os.mouse_right, commands=["➡️"])
+        self.__dp.register_message_handler(self.__os.mouse_down, commands=["⬇️"])
+        self.__dp.register_message_handler(self.__os.mouse_click, commands=["press"])
 
     def run(self):
         executor.start_polling(self.__dp, skip_updates=True)
