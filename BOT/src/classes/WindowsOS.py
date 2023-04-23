@@ -1,8 +1,9 @@
 import os
 import socket
 import cv2
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 import wmi
+
+from pynput.mouse import Button, Controller
 
 import screen_brightness_control as sbc
 
@@ -12,9 +13,9 @@ import random
 
 import tkinter as tk
 from tkinter import *
-from tkinter import messagebox
 
-from aiogram.dispatcher import FSMContext
+
+#from aiogram.dispatcher import FSMContext
 
 import pyautogui
 from aiogram import types
@@ -23,7 +24,10 @@ from src.classes import Config
 from config.Charac import characteristics
 from src.interfaces.OSInterface import OSInterface
 
+mouse = Controller()
+
 chars = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+
 
 class WindowsOS(OSInterface):
 
@@ -152,3 +156,26 @@ class WindowsOS(OSInterface):
         keyboard.release('win')
         keyboard.release('d')
         await self.__bot.send_message(message.from_user.id, "ГОТОВО!")
+        
+    async def alt_f4(self, message: types.Message):
+        keyboard.press('alt')
+        keyboard.press('f4')
+        keyboard.release('f4')
+        keyboard.release('alt')
+        await self.__bot.send_message(message.from_user.id, 'Процесс завершен!')
+            async def mouse_up(self, message: types.Message):
+        mouse.move(0, -30)
+
+    async def mouse_left(self, message:types.Message):
+        mouse.move(-30, 0)
+
+    async def mouse_right(self, message:types.Message):
+        mouse.move(30, 0)
+
+    async def mouse_down(self, message:types.Message):
+        mouse.move(0, 30)
+
+    async def mouse_click(self, message: types.Message):
+        pyautogui.click(clicks=2)
+
+ 
