@@ -1,9 +1,7 @@
 from src.classes.Application import Application
 from src.classes.Config import Config
-#from src.classes import FSMClass
 from src.extensions.keyboards.KeyboardWrapper import KeyboardWrapper
-from src.extensions.keyboards.BrightnessKeyboard import BrightnessKeyboard
-from src.extensions.keyboards.HotkeysKeyboard import HotkeysKeyboard
+
 
 if __name__ == '__main__':
     config_file = open('config/env')
